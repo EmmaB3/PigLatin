@@ -10,8 +10,12 @@ public void setup()
 	for(int a = 0; a < words.length; a++){
 		for(int b = 0; b < words[a].length; b ++){
 			String word = movePunctuation(pigLatin(words[a][b]));
-			if(word.length() > 0 && Character.isUpperCase(word.charAt(word.length() - 3))){
-				word = word.substring(0,1).toUpperCase() + word.substring(1,word.length() - 3) + word.substring(word.length() -3).toLowerCase();
+			if(word.length() > 0){
+				if(Character.isUpperCase(word.charAt(word.length() - 3))){
+					word = word.substring(0,1).toUpperCase() + word.substring(1,word.length() - 3) + word.substring(word.length() -3).toLowerCase();
+				}else if(Character.isUpperCase(word.charAt(word.length() - 4))){
+					word = word.substring(0,1).toUpperCase() + word.substring(1,word.length() - 4) + word.substring(word.length() -4).toLowerCase();
+				}
 			}
 			print(word);
 			print(" ");
@@ -34,15 +38,6 @@ public int findFirstVowel(String sWord)
   }
   return -1;
 }
-
-/*public String capitalized(String word){
-	int upperCase;
-	for(int a = 0; a < word.length(); a ++){
-		if(Character.isUpperCase(word.charAt(a))){
-
-		}
-	}
-}*/
 
 public String movePunctuation(String word){
 	for(int a = 0; a < word.length(); a ++){
